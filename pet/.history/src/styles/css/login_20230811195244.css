@@ -1,0 +1,8 @@
+.formSet {
+  display: flex;
+  margin-left: 5%;
+  align-items: center;
+}
+.inputLen {
+  width: 1000px;
+}

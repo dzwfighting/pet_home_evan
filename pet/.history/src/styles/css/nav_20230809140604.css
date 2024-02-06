@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+.wholeLink {
+  margin-left: 8%;
+  margin-top: 2%;
+}
+.link {
+  margin-bottom: 5%;
+}
+.navDeco {
+  background-color: transparent !important;
+}
+.navDecoColor {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2%;
+}

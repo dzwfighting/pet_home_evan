@@ -1,0 +1,10 @@
+.allprod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+.eachProcard {
+  width: 40vw;
+  height: 50vw;
+}

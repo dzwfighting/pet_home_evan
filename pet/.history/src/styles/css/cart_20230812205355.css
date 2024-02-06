@@ -1,0 +1,29 @@
+.cardSet {
+  position: relative;
+  margin-top: 10px;
+  left: 3%;
+  width: 90vw;
+}
+.pmiSet {
+  margin-top: 150px;
+  margin-left: 10px;
+}
+.plusSet {
+  margin-right: 10px;
+}
+.minusSet {
+  margin-left: 10px;
+}
+.cntSet {
+  text-align: center;
+  display: inline !important;
+  width: 50px !important;
+  margin-top: 10px;
+  /* position: relative;
+  width: 10px; */
+  /* margin-left: -10px; */
+}
+.btnSet {
+  /* left: 3%; */
+  /* width: 400px; */
+}

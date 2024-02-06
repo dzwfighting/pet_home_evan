@@ -1,0 +1,8 @@
+.errorCard {
+  position: relative;
+  left: 3%;
+  width: 90vw !important;
+}
+.errormsg {
+  text-align: center;
+}

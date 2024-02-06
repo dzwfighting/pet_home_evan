@@ -1,0 +1,32 @@
+.introduceCard {
+  text-align: center !important;
+}
+.introduceCardTitle {
+  font-family: cursive;
+  font-size: 2.5rem;
+}
+.bgSet {
+  background-color: transparent;
+  border: 0;
+}
+
+.ImgSet {
+  position: relative;
+  width: 95%;
+  height: 600px;
+  opacity: 0.9;
+}
+
+.introduceCardText {
+  margin-top: 10%;
+  font-family: cursive;
+  font-size: 1.8rem;
+}
+.introduceCardButton {
+  margin-top: 5%;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .introduceCardTitle {
+  }
+}

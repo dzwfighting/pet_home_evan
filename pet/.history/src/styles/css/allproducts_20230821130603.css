@@ -1,0 +1,8 @@
+.allProd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eachProcard {
+  width: 40vw;
+}

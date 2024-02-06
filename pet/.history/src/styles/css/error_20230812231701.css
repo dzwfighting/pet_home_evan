@@ -1,0 +1,12 @@
+.errorCard {
+  position: relative;
+  left: 3%;
+  width: 90vw !important;
+}
+.errormsg p {
+  display: flex;
+  text-align: justify;
+  margin-top: -10vw;
+  width: 90vw;
+  height: 90vw;
+}

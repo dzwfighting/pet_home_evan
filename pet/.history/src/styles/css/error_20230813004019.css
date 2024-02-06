@@ -1,0 +1,25 @@
+.errorCard {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  left: 3%;
+  margin-top: -50px !important;
+  width: 90vw !important;
+  height: 40vw !important;
+}
+errorCard h2 {
+  margin-top: 10px !important;
+}
+.errormsg {
+  width: 85vw !important;
+  height: 24vw !important;
+  /* margin-left: -3vw; */
+}
+.errormsg p {
+  display: inline-block;
+  width: 85vw !important;
+  height: 28vw !important;
+  margin: 0 !important;
+}

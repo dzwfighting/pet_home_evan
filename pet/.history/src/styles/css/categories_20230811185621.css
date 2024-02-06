@@ -1,0 +1,13 @@
+.cardSet {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+.imgSet {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 800px;
+}

@@ -1,0 +1,15 @@
+.cardSet {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: -50px, 0, 0, -50px !important;
+}
+.imgSet {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 1000px;
+  margin: -50px, 0, 0, -50px !important;
+}

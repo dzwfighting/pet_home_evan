@@ -1,0 +1,19 @@
+.errorCard {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  left: 3%;
+  width: 100vw !important;
+}
+.errormsg {
+  /* margin-left: -3vw; */
+}
+.errormsg p {
+  /* width: 90vw !important;
+  height: 90vw !important; */
+  display: inline-block;
+  width: 90vw !important;
+  height: 15vw !important;
+}

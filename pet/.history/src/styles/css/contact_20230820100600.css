@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+.containerSet h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 9%;
+  margin-left: 5%;
+  font-size: 1.8rem;
+}
+.containerSet p {
+  font-family: "Open Sans", sans-serif;
+  margin-top: 6%;
+  font-size: 1.5rem;
+}
+.imgSet {
+  width: 80%;
+  margin-bottom: 7%;
+}
+.imgSize {
+  margin-top: -11%;
+}
+.emailBlock {
+  font-family: "Open Sans", sans-serif;
+  width: 60%;
+  height: 20%;
+  background-color: beige;
+  border-radius: 4%;
+}
+.emailP {
+  margin-left: 20%;
+  padding-top: 5%;
+}
+
+@media screen and (min-width: 1025px) {
+  .containerSet h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 9%;
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+  .containerSet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .containerSet p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    width: 1000px;
+    margin-left: 100px;
+    font-size: 1.7rem;
+  }
+  .imgSet {
+    width: auto;
+    height: 55%;
+    margin-top: -70px;
+  }
+  .emailBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    width: 1000px;
+    height: 60px;
+    background-color: beige;
+    border-radius: 4%;
+    margin-left: 100px;
+    /* margin-top: -50px; */
+  }
+  .emailP {
+    margin-left: 30px;
+    margin-bottom: 100px;
+    /* padding-top: 15px; */
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .containerSet h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 10px);
+    font-family: "Open Sans", sans-serif;
+    margin-top: 9%;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  .containerSet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .containerSet p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    margin-left: 110px;
+    width: calc(100%);
+    font-size: 1.2rem;
+  }
+  .imgSet {
+    width: auto;
+    height: 55%;
+    margin-top: -55px;
+  }
+  .emailBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    width: calc(100% - 10px);
+    height: 50px;
+    background-color: beige;
+    border-radius: 4%;
+    margin-left: 110px;
+
+    /* margin-top: -33px; */
+  }
+
+  .emailP {
+    margin-left: 30px;
+    margin-bottom: 43px;
+    padding-top: 3%;
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .containerSet h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 9%;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .containerSet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .containerSet p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    width: 450px;
+    margin-top: 6%;
+    font-size: 1rem;
+    /* margin-left: 80px; */
+    /* margin-right: 5px; */
+  }
+  .imgSet {
+    width: auto;
+    height: 60%;
+    margin-top: -45px;
+  }
+  .emailBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    width: 300px;
+    height: 35px;
+    background-color: beige;
+    border-radius: 4%;
+    margin-left: 60px;
+  }
+  .emailP {
+    margin-left: 10px;
+    margin-bottom: 25px;
+    padding-top: 3%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .containerSet h3 {
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 9%;
+    font-size: 1.1rem;
+    /* font-weight: 900; */
+    /* margin-left: 10px;
+    margin-right: 10px; */
+  }
+  .containerSet {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 1%;
+    width: 90vw;
+  }
+  .containerSet p {
+    width: 300px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 6%;
+    font-size: 1rem;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+  }
+  .imgSet {
+    width: auto;
+    height: 60%;
+    margin-top: -35px;
+  }
+  .emailBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    width: 250px;
+    height: 35px;
+    background-color: beige;
+    border-radius: 4%;
+    margin-left: 20px;
+  }
+  .emailP {
+    margin-left: 10px;
+    margin-bottom: 25px;
+    padding-top: 5%;
+  }
+}

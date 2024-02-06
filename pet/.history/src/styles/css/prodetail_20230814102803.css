@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+.detailcard {
+  display: flex;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  left: 1vw;
+  right: 1vw;
+}
+.detailcardimg {
+  width: 25vw;
+  height: 40vw;
+}
+.detailcontent {
+  width: 66vw;
+}
+.detailcontent h2 {
+  margin-bottom: 1vw;
+}
+.detailcontent p {
+  margin-left: 1vw;
+  text-align: left;
+  padding-right: 1vw;
+  padding-bottom: 1vw;
+  width: 66vw;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 917px) and (max-width: 1105px) {
+  .detailcardimg {
+    width: 28vw;
+    height: 45vw;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 917px) {
+  /* .detailcardimg {
+    width: 28vw;
+    height: 45vw;
+  } */
+  .detailcontent h2 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+  .detailcontent p {
+    margin-left: 5px;
+    text-align: left;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    width: 66vw;
+    font-size: 0.8rem;
+  }
+}

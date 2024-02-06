@@ -1,0 +1,30 @@
+.cardSet {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-top: 80px;
+  margin-left: 20px !important;
+  width: calc(100% - 50px);
+}
+.pmiSet {
+  margin-top: 150px;
+  margin-left: -30px;
+}
+.plusSet {
+  margin-right: 10px;
+}
+.minusSet {
+  margin-left: 10px;
+}
+.inputSet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 60px;
+  /* margin-left: -10px; */
+}
+.btnSet {
+  width: 400px;
+}

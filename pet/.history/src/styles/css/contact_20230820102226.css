@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+.contactContainerSet h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 9%;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.contactContainerSet p {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 6%;
+  font-size: 1.5rem;
+}
+
+.emailBlock {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 5vw;
+  background-color: beige;
+  border-radius: 4%;
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .contactContainerSet p {
+    font-size: 1.2rem;
+  }
+  .emailBlock {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .contactContainerSet h3 {
+    font-size: 1.3rem;
+  }
+
+  .contactContainerSet {
+    width: 80vw;
+  }
+  .contactContainerSet p {
+    width: 80vw;
+    font-size: 1rem;
+  }
+  .emailBlock {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .contactContainerSet h3 {
+    font-size: 1.3rem;
+  }
+
+  .contactContainerSet p {
+    font-size: 1rem;
+  }
+  .emailBlock {
+    font-size: 1rem;
+  }
+}

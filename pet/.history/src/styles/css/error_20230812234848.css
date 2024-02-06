@@ -1,0 +1,26 @@
+.errorCard {
+  /* position: relative; */
+  left: 3%;
+  width: 90vw !important;
+}
+.errormsg {
+  margin-left: -3vw;
+}
+.errormsg p {
+  /* width: 90vw !important;
+  height: 90vw !important; */
+  display: inline-block;
+  width: 85vw !important;
+  height: 15vw !important;
+}
+
+@media screen and (min-width: 1090px) and (max-width: 1368px) {
+  .errormsg {
+    margin-left: -6vw;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 1089px) {
+  .errormsg {
+    margin-left: -7vw;
+  }
+}

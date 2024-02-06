@@ -1,0 +1,109 @@
+.cardSet {
+  position: relative;
+  margin-top: 10px;
+  left: 3%;
+  width: 90vw;
+}
+.cartTitle {
+  margin-bottom: 100px;
+  /* margin-top: 50px; */
+}
+.pmiSet {
+  /* margin-top: 150px; */
+  margin-left: 10px;
+}
+.plusSet {
+  margin-right: 10px;
+}
+.minusSet {
+  margin-left: 10px;
+}
+.cntSet {
+  text-align: center;
+  display: inline !important;
+  width: 50px !important;
+}
+.checkBtnSet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 7vw;
+  font-size: 1.2rem !important;
+  margin-left: 3vw;
+  width: max-content !important;
+}
+.cartImg {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 769px) and (max-width: 865px) {
+  .pmiSet {
+    margin-top: 150px;
+    margin-left: 2vw;
+    width: 20vw;
+  }
+  .plusSet {
+    margin-right: 10px;
+  }
+  .minusSet {
+    margin-left: 10px;
+  }
+  .cntSet {
+    text-align: center;
+    display: inline !important;
+    width: 45px !important;
+  }
+  .checkBtnSet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 7vw;
+    font-size: 1rem !important;
+    margin-left: 4vw;
+    width: max-content !important;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .cardSet {
+    position: relative;
+    margin-top: 10px;
+    left: 18vw;
+    width: 95vw;
+  }
+  .plusSet {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+  }
+  .minusSet {
+    margin-left: 10px;
+  }
+  .cntSet {
+    text-align: center;
+    display: inline !important;
+    width: 40px !important;
+    height: 30px;
+  }
+  .checkBtnSet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 7vw;
+    font-size: 1rem !important;
+    margin-left: 4vw;
+    font-size: 0.7rem !important;
+    width: max-content !important;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .cardSet {
+    position: relative;
+    margin-top: 10px;
+    width: 95vw;
+  }
+}

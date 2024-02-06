@@ -1,0 +1,14 @@
+.detailcard {
+  display: flex;
+  position: relative;
+  width: 90vw;
+  left: 5%;
+}
+.detailcardimg {
+  width: 40vw;
+}
+.detailcontent {
+  width: 60vw;
+}
+.detailcontent p {
+}

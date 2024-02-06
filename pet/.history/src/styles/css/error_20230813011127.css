@@ -1,0 +1,57 @@
+.errorCard {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  left: 3%;
+  margin-top: -50px !important;
+  width: 90vw !important;
+  height: 40vw !important;
+}
+.errorhead {
+  margin-bottom: 20px;
+}
+.errorhead h2 {
+  font-size: 1.5rem !important;
+  /* margin-bottom: 20px; */
+}
+.errormsg {
+  width: 85vw !important;
+  height: 24vw !important;
+  /* margin-left: -3vw; */
+}
+.errormsg p {
+  display: inline-block;
+  width: 85vw !important;
+  height: 28vw !important;
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 645px) {
+  .errorCard {
+    left: 3%;
+    margin-top: -50px !important;
+    width: 100vw !important;
+    height: 50vw !important;
+  }
+  .errorhead {
+    margin-bottom: 10px;
+    width: 10vw;
+  }
+  .errorhead h2 {
+    font-size: 1.1rem !important;
+    /* margin-bottom: 20px; */
+  }
+  .errormsg {
+    width: 85vw !important;
+    height: 24vw !important;
+    /* margin-left: -3vw; */
+  }
+  .errormsg p {
+    display: inline-block;
+    width: 85vw !important;
+    height: 28vw !important;
+    margin: 0 !important;
+  }
+}

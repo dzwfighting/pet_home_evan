@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+.detailcard {
+  display: flex;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  left: 1vw;
+  right: 1vw;
+}
+.detailcardimg {
+  width: 25vw;
+  height: 40vw;
+}
+.detailcontent {
+  width: 66vw;
+}
+.detailcontent h2 {
+  margin-bottom: 1vw;
+}
+.detailcontent p {
+  margin-left: 1vw;
+  text-align: left;
+  padding-right: 1vw;
+  padding-bottom: 1vw;
+  width: 66vw;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1105px) {
+  .detailcardimg {
+    width: 300px;
+    height: 380px;
+  }
+  .detailfinalBtn {
+    margin-top: -5px;
+  }
+}
+
+@media screen and (min-width: 917px) and (max-width: 1105px) {
+  .detailcardimg {
+    width: 28vw;
+    height: 450px;
+  }
+  .detailcontent {
+    width: 27vw;
+  }
+  .detailcontent h2 {
+    font-size: 1rem;
+  }
+  .detailcontent p {
+    font-size: 0.8rem;
+  }
+  .detailfinalBtn {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-width: 771px) and (max-width: 917px) {
+  /* .detailcardimg {
+    width: 28vw;
+    height: 45vw;
+  } */
+  .detailcontent h2 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+  .detailcontent p {
+    margin-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    width: 66vw;
+    font-size: 0.7rem;
+  }
+}
+@media screen and (min-width: 615px) and (max-width: 771px) {
+  .detailcardimg {
+    width: 20vw;
+    height: 30vw;
+  }
+  .detailcontent h2 {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  .detailcontent p {
+    margin-left: 5px;
+    padding-right: 0;
+    padding-bottom: 0px;
+    width: 66vw;
+    font-size: 0.5rem;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 615px) {
+  .detailcard {
+    display: block;
+  }
+  .detailcardimg {
+    position: relative;
+    left: 2%;
+    width: 20vw;
+    height: 30vw;
+  }
+  .detailcontent {
+    width: 95vw;
+  }
+  .detailcontent h2 {
+    width: 95vw;
+    margin-left: 0;
+    margin-bottom: 2px;
+    font-size: 0.6rem;
+  }
+  .detailcontent p {
+    margin-left: 2px;
+    padding-right: 0;
+    padding-bottom: 0px;
+    width: 90vw;
+    font-size: 0.4rem;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 480px) {
+  .detailcard {
+    display: block;
+  }
+  .detailcardimg {
+    position: relative;
+    left: 2%;
+    width: 150px;
+    height: 200px;
+  }
+  .detailcontent {
+    width: 95vw;
+  }
+  .detailcontent h2 {
+    width: 90vw;
+    margin-left: 0;
+    margin-bottom: 2px;
+    font-size: 0.9rem;
+  }
+  .detailcontent p {
+    margin-left: 2px;
+    padding-right: 0;
+    padding-bottom: 0px;
+    width: 90vw;
+    height: 10vw;
+    font-size: 0.7rem;
+  }
+  .detailfinalBtn {
+    font-size: 0.7rem;
+  }
+}

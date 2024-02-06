@@ -1,0 +1,7 @@
+.cardSet {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 800px;
+}

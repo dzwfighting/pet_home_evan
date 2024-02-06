@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+.formSet {
+  display: flex;
+  margin-left: 5%;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+.lableSet {
+  font-size: 2rem;
+}
+
+.inputSet {
+  font-size: 1rem;
+  width: 800px;
+}
+
+.btnSet {
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  /* font-size: 1.1rem; */
+}
+.pSet {
+  font-size: 1.2rem !important;
+}
+
+@media screen and (min-width: 1025px) {
+  .formSet {
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+  }
+  .lableSet {
+    font-size: 2rem;
+  }
+
+  .inputSet {
+    font-size: 1rem;
+    width: 800px;
+  }
+  .btnSet {
+    align-items: center;
+    justify-content: center;
+    width: 78px !important;
+    height: 35px !important;
+  }
+  .pSet {
+    font-size: 1.2rem !important;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .formSet {
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+  }
+  .lableSet {
+    font-size: 1.5rem;
+  }
+  .inputSet {
+    font-size: 0.9rem !important;
+    width: 700px !important;
+  }
+  .btnSet {
+    align-items: center;
+    justify-content: center;
+    width: 81px !important;
+    padding-top: 1px;
+    /* padding-left: 11px; */
+    height: 35px !important;
+    /* font-size: 0.9rem !important; */
+  }
+  .pSet {
+    font-size: 1rem !important;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .formSet {
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+  }
+  .lableSet {
+    font-size: 1.5rem;
+  }
+  .inputSet {
+    font-size: 0.9rem !important;
+    width: 700px !important;
+  }
+  .btnSet {
+    align-items: center;
+    justify-content: center;
+    width: 81px !important;
+    padding-top: 1px;
+    padding-left: 11px;
+    height: 35px !important;
+    /* font-size: 1rem !important; */
+  }
+  .pSet {
+    font-size: 1rem !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .formSet {
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 50px !important;
+  }
+  .lableSet {
+    font-size: 1.5rem;
+  }
+  .inputSet {
+    font-size: 0.9rem !important;
+    width: 290px !important;
+  }
+  .btnSet {
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    padding-left: 11px;
+    height: 35px;
+    font-size: 0.8rem !important;
+    margin-top: 10px;
+  }
+  .pSet {
+    font-size: 1rem !important;
+  }
+}

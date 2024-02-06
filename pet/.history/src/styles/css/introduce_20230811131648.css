@@ -1,0 +1,35 @@
+.introduceCard {
+  text-align: center !important;
+}
+.introduceCardTitle {
+  font-family: cursive;
+  font-size: 2.5rem;
+}
+.bgSet {
+  height: 600px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  margin-bottom: 1%;
+}
+
+.ImgSet {
+  height: 600px;
+  opacity: 0.9;
+}
+
+.introduceCardText {
+  margin-top: 10%;
+  font-family: cursive;
+  font-size: 1.8rem;
+}
+.introduceCardButton {
+  margin-top: 5%;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .introduceCardTitle {
+  }
+}
