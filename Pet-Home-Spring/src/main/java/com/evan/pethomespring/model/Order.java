@@ -1,9 +1,6 @@
 package com.evan.pethomespring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,30 +11,33 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Order {
     @Id
     @Column(name = "order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ElementCollection
-        @CollectionTable(name = "orders")
-        @Column(name = "order_products")
-    List<Long> orderProducts;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderProd> OrderProds;
 
-    @Column(name = "total_amount")
-    private Long totalAmount;
-    @Column(name = "purchase_date")
-    private String purchaseDate;
+    public User getUser() {
+        return user;
+    }
 
-    public Order(User user, List<Long> orderProducts, Long totalAmount, String purchaseDate) {
+    public void setUser(User user) {
         this.user = user;
-        this.orderProducts = orderProducts;
-        this.totalAmount = totalAmount;
-        this.purchaseDate = purchaseDate;
+    }
+
+    public List<OrderProd> getOrderProds() {
+        return OrderProds;
+    }
+
+    public void setOrderProds(List<OrderProd> orderProds) {
+        OrderProds = orderProds;
     }
 }

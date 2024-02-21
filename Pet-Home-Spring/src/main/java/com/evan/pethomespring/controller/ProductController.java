@@ -1,5 +1,6 @@
 package com.evan.pethomespring.controller;
 
+import com.evan.pethomespring.exception.ProductNotFoundException;
 import com.evan.pethomespring.model.Product;
 import com.evan.pethomespring.service.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ public class ProductController {
     @Autowired
     ProductServiceImp productServiceImp;
 
-    @PostMapping("/addproduct")
+    @PostMapping("/product")
     Product newProduct(@RequestBody Product newProduct) {
         System.out.println("add product: " + newProduct.getProductId() + " product name: " + newProduct.getName());
         return productServiceImp.saveProduct(newProduct);
@@ -24,17 +25,17 @@ public class ProductController {
         return productServiceImp.findAllProducts();
     }
 
-    @GetMapping("/product/{id}")
-    Product getProductById(@PathVariable Long id) {
+    @GetMapping("/products/{id}")
+    Product getProductById(@PathVariable Long id) throws ProductNotFoundException {
         System.out.println("get product by id: " + id);
         return productServiceImp.findProductById(id);
     }
 
-    @PostMapping("/product/category")
-    List<Product> getProductByCategory(@RequestBody Product product) {
-        System.out.println("get product by category");
-        return productServiceImp.getProductByCategory(product.getCategory());
-    }
+//    @GetMapping("/products/{id}/category")
+//    List<Product> getProductByCategory(@RequestBody Product product) {
+//        System.out.println("get product by category");
+//        return productServiceImp.getProductByCategory(product.getCategory());
+//    }
 
     @PutMapping("/product/{id}")
     Product updateProduct(@PathVariable Long id, @RequestBody Product newProduct) {

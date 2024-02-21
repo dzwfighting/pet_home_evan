@@ -8,6 +8,7 @@ class PetHomeSpringApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("welcome to test project");
     }
 
 }

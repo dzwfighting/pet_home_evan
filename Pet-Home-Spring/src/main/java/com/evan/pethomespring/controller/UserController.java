@@ -1,8 +1,15 @@
 package com.evan.pethomespring.controller;
 
+import com.evan.pethomespring.exception.UserExistException;
+import com.evan.pethomespring.jwt.JWTUtil;
+import com.evan.pethomespring.model.Order;
+import com.evan.pethomespring.model.Product;
 import com.evan.pethomespring.model.User;
+import com.evan.pethomespring.model.UserRegistrationRequest;
 import com.evan.pethomespring.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,24 +19,39 @@ public class UserController {
     @Autowired
     UserServiceImp userServiceImp;
 
-    @PostMapping("/register")
-    User newUser(@RequestBody User newUser) throws Exception{
-        System.out.println("For now, we will add new user, this is user's username: " + newUser.getUsername() + " this is user's email: " + newUser.getEmail());
-        try {
-            if (userServiceImp.getUserByEmail(newUser.getEmail()) != null)
-                return userServiceImp.saveUser(newUser);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return null;
+    private final JWTUtil jwtUtil;
 
+    public UserController(JWTUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
     }
 
-    @GetMapping("/login")
-    public String login() {
-        System.out.println("in login function");
-        return "login";
+//    @PostMapping("/users")
+//    User newUser(@RequestBody User newUser) throws Exception{
+//        System.out.println("For now, we will add new user, this is user's username: " + newUser.getUsername() + " this is user's email: " + newUser.getEmail());
+//        if (userServiceImp.getUserByEmail(newUser.getEmail()) != null) {
+//            System.out.println("This user already registered, please try again");
+//            throw new UserExistException(newUser.getUsername());
+//        }
+//        return userServiceImp.saveUser(newUser);
+//    }
+
+    @PostMapping("/user/register")
+    public ResponseEntity<?> registerCustomer(@RequestBody UserRegistrationRequest request) {
+        System.out.println("For now, we will check if login then add new user, this is user's name: " + request.getName() + " this is user's email: " + request.getEmail());
+        User user = new User(request.getName(), request.getEmail(), request.getPassword());
+        userServiceImp.saveUser(user);
+        String jwtToken = jwtUtil.issueToken(request.getEmail(), "ROLE_USER");
+        return ResponseEntity.ok()
+                .header(HttpHeaders.AUTHORIZATION, jwtToken)
+                .build();
     }
+
+
+//    @GetMapping("/login")
+//    public String login() {
+//        System.out.println("in login function");
+//        return "login";
+//    }
 
     @GetMapping("/users")
     List<User> getAllUsers(){
@@ -43,10 +65,17 @@ public class UserController {
         return userServiceImp.findUserById(id);
     }
 
-    @PostMapping("/user/search")
-    List<User> getUserByName(@RequestBody User user) {
+    @GetMapping("/finduser/{email}")
+    User getUserByEmail(@PathVariable String email) {
+        System.out.println("find user by email");
+        return userServiceImp.getUserByEmail(email);
+    }
+
+    @GetMapping("/user/search/{username}")
+
+    List<User> getUserByName(@PathVariable String username) {
         System.out.println("in controller, find user by username");
-        return userServiceImp.getUserByName(user.getUsername());
+        return userServiceImp.getUserByName(username);
     }
 
     @PutMapping("/user/{id}")
@@ -61,6 +90,52 @@ public class UserController {
         return null;
     }
 
+//    @PutMapping("/user/{userId}/addfavorite/{productId}/")
+//    User addFavoriteProd(@PathVariable Long userId, @PathVariable Long productId) {
+//        System.out.println("For add product in current user");
+//        System.out.println("userId: " + userId + " product: " + productId);
+//        try {
+//            return userServiceImp.addFavoriteProd(userId, productId);
+//        }catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        return null;
+//    }
+
+    @GetMapping("/user/{userId}/orders/{orderId}")
+    Order getOrderById(@PathVariable Long userId, @PathVariable Long orderId) {
+        System.out.println("Controller: User get correspond order by using orderId");
+        System.out.println("userId: " + userId + "orderId: " + orderId);
+        try {
+            return userServiceImp.getOrderById(userId, orderId);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @GetMapping("/user/{userId}/orders")
+    List<Order> getAllOrdersById(@PathVariable Long userId) {
+        System.out.println("get all orders for current user: " + userId);
+        try {
+            return userServiceImp.getOrdersById(userId);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @GetMapping("user/{userId}/favorites")
+    List<Product> getAllFavoritesById(@PathVariable Long userId) {
+        System.out.println("get all favorites products for current user: " + userId);
+        try {
+            return userServiceImp.getFavoritesById(userId);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     @DeleteMapping("/user/{id}")
     String deleteUser(@PathVariable Long id) {
         System.out.println("For delete current user, the id is: " + id);
@@ -70,7 +145,5 @@ public class UserController {
             System.out.println(e);
             return null;
         }
-
-
     }
 }

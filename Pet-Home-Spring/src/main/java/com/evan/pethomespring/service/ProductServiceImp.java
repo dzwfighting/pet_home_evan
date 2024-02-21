@@ -13,24 +13,34 @@ public class ProductServiceImp implements ProductService{
     @Autowired
     private ProductRepository productRepository;
 
+    @Override
     public Product saveProduct(Product product) { return productRepository.save(product); }
-    public List<Product> findAllProducts() { return productRepository.findAll();}
-    public Product findProductById(Long productId) { return productRepository.getReferenceById(productId); }
 
     @Override
-    public List<Product> getProductByCategory(String category) {
-        return productRepository.getProductByCategory(category);
+    public List<Product> findAllProducts() { return productRepository.findAll();}
+
+    @Override
+    public Product findProductById(Long productId) throws ProductNotFoundException {
+        Product product = productRepository.findById(productId).orElse(null);
+        if (product == null) throw new ProductNotFoundException(productId);
+        return product;
     }
 
-    public Product updateProductById(Long productId, Product newProduct) throws Exception{
+//    @Override
+//    public List<Product> getProductByCategory(String category) {
+//        return productRepository.getProductByCategory(category);
+//    }
+
+    @Override
+    public Product updateProductById(Long productId, Product newProduct) throws ProductNotFoundException{
         Product exitProduct = productRepository.findById(productId).orElse(null);
         if(exitProduct != null) {
-            exitProduct.setAvatar(newProduct.getAvatar());
+            exitProduct.setImage(newProduct.getImage());
             exitProduct.setName(newProduct.getName());
             exitProduct.setCategory(newProduct.getCategory());
             exitProduct.setPrice(newProduct.getPrice());
             exitProduct.setIntroduce(newProduct.getIntroduce());
-            exitProduct.setReviews(newProduct.getReviews());
+//            exitProduct.setReviews(newProduct.getReviews());
 
             return productRepository.save(exitProduct);
         } else {
@@ -38,6 +48,7 @@ public class ProductServiceImp implements ProductService{
         }
     }
 
+    @Override
     public String deleteProductById(Long productId) throws ProductNotFoundException {
         if(!productRepository.existsById(productId)) {
             throw new ProductNotFoundException(productId);

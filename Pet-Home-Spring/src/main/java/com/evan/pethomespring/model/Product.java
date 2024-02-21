@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "products", uniqueConstraints = @UniqueConstraint(columnNames = "product_id"))
@@ -20,8 +22,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    @Column(name = "avatar")
-    private String avatar;
+    @Column(name = "image")
+    private String image;
     @Column(name = "name")
     private String name;
     @Column(name = "category")
@@ -31,14 +33,8 @@ public class Product {
     @Column(name = "introduce")
     private String introduce;
 
-    @OneToMany(mappedBy = "product")
-    private List<Review> reviews;
-
-    public Product(String avatar, String name, Long price, String introduce, List<Review> reviews) {
-        this.avatar = avatar;
-        this.name = name;
-        this.price = price;
-        this.introduce = introduce;
-        this.reviews = reviews;
-    }
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<CartProd> cartProds = new HashSet<>();
+//    @ManyToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
+//    private Set<User> favoritedByUsers = new HashSet<>();
 }

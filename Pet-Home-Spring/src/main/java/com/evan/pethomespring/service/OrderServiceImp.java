@@ -15,15 +15,18 @@ public class OrderServiceImp implements OrderService{
 
     public Order saveOrder(Order order) { return orderRepository.save(order); }
     public List<Order> getAllOrders() { return orderRepository.findAll(); }
-    public Order getOrderById(Long orderId) { return orderRepository.getReferenceById(orderId); }
 
-    public Order updateOrderById(Long orderId, Order newOrder) throws Exception{
+    public Order getOrderById(Long orderId) throws OrderNotFoundException {
+        Order order = orderRepository.findById(orderId).orElse(null);
+        if (order == null) throw new OrderNotFoundException(orderId);
+        return order;
+    }
+
+    public Order updateOrderById(Long orderId, Order newOrder) throws OrderNotFoundException{
         Order exitOrder = orderRepository.findById(orderId).orElse(null);
         if (exitOrder != null) {
             exitOrder.setUser(newOrder.getUser());
-            exitOrder.setOrderProducts(newOrder.getOrderProducts());
-            exitOrder.setTotalAmount(newOrder.getTotalAmount());
-            exitOrder.setPurchaseDate(newOrder.getPurchaseDate());
+            exitOrder.setOrderProds(newOrder.getOrderProds());
 
             return orderRepository.save(exitOrder);
         } else {
