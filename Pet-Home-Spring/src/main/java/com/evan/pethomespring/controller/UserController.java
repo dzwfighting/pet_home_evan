@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class UserController {
     @Autowired
     UserServiceImp userServiceImp;
@@ -37,10 +38,10 @@ public class UserController {
 
     @PostMapping("/user/register")
     public ResponseEntity<?> registerCustomer(@RequestBody UserRegistrationRequest request) {
-        System.out.println("For now, we will check if login then add new user, this is user's name: " + request.getName() + " this is user's email: " + request.getEmail());
-        User user = new User(request.getName(), request.getEmail(), request.getPassword());
+        System.out.println("For now, we will check if login then add to new user, this is user's name: " + request.getName() + " this is user's email: " + request.getEmail() + " user role: " + request.getRole());
+        User user = new User(request.getName(), request.getEmail(), request.getPassword(), request.getRole());
         userServiceImp.saveUser(user);
-        String jwtToken = jwtUtil.issueToken(request.getEmail(), "ROLE_USER");
+        String jwtToken = jwtUtil.issueToken(request.getEmail(), request.getRole(), "ROLE_USER");
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, jwtToken)
                 .build();

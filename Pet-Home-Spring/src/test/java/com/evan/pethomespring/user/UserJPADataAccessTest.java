@@ -4,10 +4,7 @@ import com.evan.pethomespring.TestConfig;
 import com.evan.pethomespring.exception.OrderNotFoundException;
 import com.evan.pethomespring.exception.ProductNotFoundException;
 import com.evan.pethomespring.exception.UserNotFoundException;
-import com.evan.pethomespring.model.CartProd;
-import com.evan.pethomespring.model.Order;
-import com.evan.pethomespring.model.Product;
-import com.evan.pethomespring.model.User;
+import com.evan.pethomespring.model.*;
 import com.evan.pethomespring.repository.OrderRepository;
 import com.evan.pethomespring.repository.ProductRepository;
 import com.evan.pethomespring.repository.UserRepository;
@@ -53,7 +50,7 @@ public class UserJPADataAccessTest {
 
     @Test
     void saveUserValidTest() {
-        User user = new User(1L, "user1", "user1@gmail.com", "password");
+        User user = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
 
         when(passwordEncoder.encode("password")).thenReturn("encodedPassword");
         when(userRepository.save(user)).thenReturn(user);
@@ -74,7 +71,7 @@ public class UserJPADataAccessTest {
 
     @Test
     void findUserByIdValidTest() {
-        User user = new User(1L, "user1", "user1@gmail.com", "password");
+        User user = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
 
         when(userRepository.getReferenceById(1L)).thenReturn(user);
         User res = userService.findUserById(1L);
@@ -85,8 +82,8 @@ public class UserJPADataAccessTest {
 
     @Test
     void updateUserByIdTest() throws UserNotFoundException {
-        User user = new User(1L, "user1", "user1@gmail.com", "password");
-        User newUser = new User(1L, "user1", "user1-1@gmail.com", "password");
+        User user = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
+        User newUser = new User(1L, "user1", "user1-1@gmail.com", "password", Roles.USER);
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
         when(userRepository.save(any())).thenReturn(newUser);
@@ -103,7 +100,7 @@ public class UserJPADataAccessTest {
 
     @Test
     void getUserByEmailTest() {
-        User user = new User(1L, "user1", "user1@gmail.com", "password");
+        User user = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
         when(userRepository.findByEmail(user.getEmail())).thenReturn(user);
 
         User getUser = userService.getUserByEmail(user.getEmail());
@@ -115,8 +112,8 @@ public class UserJPADataAccessTest {
 
     @Test
     void GetUsersByNameTest() {
-        User user1 = new User(1L, "user1", "user1@gmail.com", "password");
-        User user2 = new User(2L, "user1", "user1-1@gmail.com", "password");
+        User user1 = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
+        User user2 = new User(2L, "user1", "user1-1@gmail.com", "password", Roles.USER);
 
         when(userRepository.findByName(user1.getName())).thenReturn(Arrays.asList(user1, user2));
 

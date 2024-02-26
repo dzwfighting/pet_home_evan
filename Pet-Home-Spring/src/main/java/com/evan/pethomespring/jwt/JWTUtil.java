@@ -1,5 +1,6 @@
 package com.evan.pethomespring.jwt;
 
+import com.evan.pethomespring.model.Roles;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -19,23 +20,28 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class JWTUtil {
     private static final String SECRET_KEY = "foobar_123456789_foobar_123456789_foobar_123456789_foobar_123456789";
 
-    public String issueToken(String subject) {
-        return issueToken(subject, Collections.emptyMap());
+    public String issueToken(String subject, Roles role) {
+        return issueToken(subject, role, Collections.emptyMap());
     }
 
-    public String issueToken(String subject, String ...scopes) {
-        return issueToken(subject, Collections.singletonMap("scopes", scopes));
+    public String issueToken(String subject, Roles role, String ...scopes) {
+//        System.out.println("subject: " + subject + " role: " + role);
+        return issueToken(subject, role, Collections.singletonMap("scopes", scopes));
     }
-    public String issueToken(String subject, List<String> scopes) {
-        return issueToken(subject, Collections.singletonMap("scopes", scopes));
+    public String issueToken(String subject, Roles role, List<String> scopes) {
+        return issueToken(subject, role, Collections.singletonMap("scopes", scopes));
     }
 
     public String issueToken(
             String subject,
+            Roles role,
             Map<String, Object> claims) {
+            Map<String, Object> newClaims = new HashMap<>(claims);
+            newClaims.put("role", role.toString());
+
             String token = Jwts
                     .builder()
-                    .setClaims(claims)
+                    .setClaims(newClaims)
                     .setSubject(subject)
                     .setIssuer("https://amigoscode.com")
                     .setIssuedAt(Date.from(Instant.now()))

@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.*;
 
@@ -31,6 +32,9 @@ public class User implements UserDetails {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "role", nullable = false)
+    private Roles role;
 
     @Column(name = "avatar")
     private String avatar;
@@ -76,24 +80,27 @@ public class User implements UserDetails {
         return true;
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, Roles role) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
-    public User(Long userId, String name, String email, String password) {
+    public User(Long userId, String name, String email, String password, Roles role) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
-    public User(Long userId, String name, String email, String password, List<Order> orders, List<Product> favorites, List<CartProd> cartProds) {
+    public User(Long userId, String name, String email, String password, Roles role, List<Order> orders, List<Product> favorites, List<CartProd> cartProds) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
         this.orders = orders;
         this.favorites = favorites;
         this.cartProds = cartProds;

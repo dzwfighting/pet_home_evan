@@ -3,7 +3,7 @@ package com.evan.pethomespring.user;
 import com.evan.pethomespring.auth.AuthenticationRequest;
 import com.evan.pethomespring.auth.AuthenticationResponse;
 import com.evan.pethomespring.jwt.JWTUtil;
-import com.evan.pethomespring.model.User;
+import com.evan.pethomespring.model.Roles;
 import com.evan.pethomespring.model.UserDTO;
 import com.evan.pethomespring.model.UserRegistrationRequest;
 import com.github.javafaker.Faker;
@@ -19,7 +19,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.UUID;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -44,8 +43,9 @@ public class AuthenticationIT {
         String name = fakerName.fullName();
         String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@gmail.com";
         String password = "password";
+        Roles role = Roles.USER;
 
-        UserRegistrationRequest userRegisteration = new UserRegistrationRequest(name, email, password);
+        UserRegistrationRequest userRegisteration = new UserRegistrationRequest(name, email, password, role);
         AuthenticationRequest authenticationRequest = new AuthenticationRequest(email, password);
 
         webTestClient.post()
