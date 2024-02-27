@@ -6,7 +6,7 @@ import {Wrap, WrapItem, Spinner, Text, Button} from '@chakra-ui/react';
 import SidebarWithHeader from "./components/shared/SideBar.jsx";
 import Card from "./components/user/Card.jsx";
 
-const App = () => {
+const User = () => {
     const [customers, setCustomers] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -59,4 +59,4 @@ const App = () => {
     )
 }
 
-export default App
+export default User;

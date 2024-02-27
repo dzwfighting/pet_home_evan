@@ -33,10 +33,11 @@ public class SecurityFilterChainConfig {
                 .antMatchers(
                         HttpMethod.POST,
                         "/user/register",
+                        "/product/*",
                         "/auth/login"
                 )
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/users")
+                .antMatchers(HttpMethod.GET, "/users", "/products")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

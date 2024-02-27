@@ -24,17 +24,33 @@ public class Product {
 
     @Column(name = "image")
     private String image;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "category")
-    private String category;
-    @Column(name = "price")
+    @Column(name = "category", nullable = false)
+    private Categories category;
+    @Column(name = "price", nullable = false)
     private Long price;
-    @Column(name = "introduce")
+    @Column(name = "introduce", nullable = false)
     private String introduce;
 
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<CartProd> cartProds = new HashSet<>();
 //    @ManyToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
 //    private Set<User> favoritedByUsers = new HashSet<>();
+
+
+    public Product(String name, Categories category, Long price, String introduce) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.introduce = introduce;
+    }
+
+    public Product(String image, String name, Categories category, Long price, String introduce) {
+        this.image = image;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.introduce = introduce;
+    }
 }

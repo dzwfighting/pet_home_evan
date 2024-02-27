@@ -13,7 +13,7 @@ public class ProductController {
     @Autowired
     ProductServiceImp productServiceImp;
 
-    @PostMapping("/product")
+    @PostMapping("/product/add")
     Product newProduct(@RequestBody Product newProduct) {
         System.out.println("add product: " + newProduct.getProductId() + " product name: " + newProduct.getName());
         return productServiceImp.saveProduct(newProduct);

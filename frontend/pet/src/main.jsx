@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import User from "./User.jsx"
 import {ChakraProvider, Text} from '@chakra-ui/react'
 import { createStandaloneToast } from '@chakra-ui/toast'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/login/Login.jsx";
-import ProductCard from "./components/product/ProductCard.jsx"
+import Product from "./components/product/Product.jsx";
 import AuthProvider from "./components/context/AuthContext.jsx";
 import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
 import SidebarWithHeader from "./components/shared/SideBar.jsx"
@@ -20,11 +20,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/users",
-        element: <ProtectedRoute><App /></ProtectedRoute>
+        element: <ProtectedRoute><User /></ProtectedRoute>
     },
     {
         path: "/products",
-        element: <SidebarWithHeader><ProductCard /></SidebarWithHeader>
+        element: <Product />
     }
 ])
 
