@@ -25,7 +25,7 @@ public class ProductController {
         return productServiceImp.findAllProducts();
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/product/{id}")
     Product getProductById(@PathVariable Long id) throws ProductNotFoundException {
         System.out.println("get product by id: " + id);
         return productServiceImp.findProductById(id);

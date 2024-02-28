@@ -4,7 +4,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { FcLike } from "react-icons/fc";
 import imageCommingSoon from "../../assets/images/image_comming_soon.jpg"
 
-export default function ProductCard({id, image, name, category, price, introduce}) {
+export default function ProductCard({id, image, name, category, price, introduce, fetchProducts}) {
     const [ifCollect, setIfCollect] = useState(false);
 
     return (

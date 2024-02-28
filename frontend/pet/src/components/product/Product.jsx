@@ -7,7 +7,7 @@ import {
 import SidebarWithHeader from "../shared/SideBar.jsx"
 import { useEffect, useState } from 'react';
 import ProductCard from "../product/ProductCard.jsx";
-import {getProducts} from "../../services/product.js"
+import {getProducts, postProducts} from "../../services/product.js"
 import {useAuth} from "../context/AuthContext.jsx";
 
 const Product = () => {
@@ -29,7 +29,7 @@ const Product = () => {
 
     useEffect(() => {
         fetchProducts();
-    }, [])
+    }, products)
 
     if (loading) {
         <SidebarWithHeader>
@@ -55,7 +55,10 @@ const Product = () => {
         <Wrap justify={"center"} spacing={"30px"}>
             {products.map((product, index) => (
                 <WrapItem key={index}>
-                    <ProductCard {...product}/>
+                    <ProductCard
+                        {...product}
+                        fetchProducts={fetchProducts}
+                    />
                 </WrapItem>
             ))}
         </Wrap>

@@ -17,7 +17,9 @@ import {
     useColorModeValue, useDisclosure,
 } from '@chakra-ui/react'
 
-export default function Card({id, name, email, role}) {
+import {deleteUserByEmail} from "../../services/client.js"
+
+export default function Card({name, email, role, fetchCustomers}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const cancelRef = useRef()
 
@@ -55,14 +57,76 @@ export default function Card({id, name, email, role}) {
 
                 <Box p={6}>
                     <Stack spacing={2} align={'center'} mb={5}>
-                        <Tag borderRadius={"full"}>{id}</Tag>
+                        <Tag borderRadius={"full"}>{email}</Tag>
                         <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
                             {name}
                         </Heading>
-                        <Text color={'gray.500'}>{email}</Text>
+                        {/*<Text color={'gray.500'}>{email}</Text>*/}
                         <Text color={'gray.500'}>{role}</Text>
                     </Stack>
                 </Box>
+                <Stack direction={'row'} justify={'center'} spacing={6} p={4}>
+                    <Stack>
+                        <Button
+                            bg={'red.400'}
+                            color={'white'}
+                            rounded={'full'}
+                            _hover={{
+                                transform: 'translateY(-2px)',
+                                boxShadow: 'lg'
+                            }}
+                            _focus={{
+                                bg: 'green.500'
+                            }}
+                            onClick={onOpen}
+                        >
+                            Delete
+                        </Button>
+                        <AlertDialog
+                            isOpen={isOpen}
+                            leastDestructiveRef={cancelRef}
+                            onClose={onClose}
+                        >
+                            <AlertDialogOverlay>
+                                <AlertDialogContent>
+                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                        Delete User
+                                    </AlertDialogHeader>
+
+                                    <AlertDialogBody>
+                                        Are you sure you want to delete {name}? You can't undo this action afterwards.
+                                    </AlertDialogBody>
+
+                                    <AlertDialogFooter>
+                                        <Button ref={cancelRef} onClick={onClose}>
+                                            Cancel
+                                        </Button>
+                                        <Button colorScheme='red' onClick={() => {
+                                            deleteUserByEmail(email).then(res => {
+                                                console.log(res)
+                                                // successNotification(
+                                                //     'User deleted',
+                                                //     `${name} was successfully deleted`
+                                                // )
+                                                fetchCustomers();
+                                            }).catch(err => {
+                                                console.log(err);
+                                                // errorNotification(
+                                                //     err.code,
+                                                //     err.response.data.message
+                                                // )
+                                            }).finally(() => {
+                                                onClose()
+                                            })
+                                        }} ml={3}>
+                                            Delete
+                                        </Button>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialogOverlay>
+                        </AlertDialog>
+                    </Stack>
+                </Stack>
 
             </Box>
         </Center>

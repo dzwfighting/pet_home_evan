@@ -37,7 +37,7 @@ public class SecurityFilterChainConfig {
                         "/auth/login"
                 )
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/users", "/products")
+                .antMatchers(HttpMethod.GET, "/users", "/products", "/finduser/*")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

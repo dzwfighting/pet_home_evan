@@ -23,6 +23,7 @@ const AuthProvider = ({children}) => {
                 roles: token.scopes
             })
         }
+        return user;
     }
     useEffect(() => {
         setUserFromToken()

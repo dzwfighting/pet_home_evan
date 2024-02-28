@@ -4,17 +4,18 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import {Wrap, WrapItem, Spinner, Text, Button} from '@chakra-ui/react';
 import SidebarWithHeader from "./components/shared/SideBar.jsx";
+import CreateUserDrawer from "./components/user/CreateUserDrawer.jsx"
 import Card from "./components/user/Card.jsx";
 
 const User = () => {
-    const [customers, setCustomers] = useState([]);
+    const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const fetchCustomers = () => {
         setLoading(true);
         getUsers().then(res => {
             console.log(res);
-            setCustomers(res.data);
+            setUsers(res.data);
         }).catch(err => {
             console.log(err);
         }).finally(() => {
@@ -37,20 +38,26 @@ const User = () => {
         </SidebarWithHeader>
     }
 
-    if (customers.length <= 0) {
+    if (users.length <= 0) {
         return (
             <SidebarWithHeader>
-                <Text>No Customer available</Text>
+                <Text>No User available</Text>
             </SidebarWithHeader>
         )
     }
 
     return (
         <SidebarWithHeader>
+            {/*<CreateUserDrawer*/}
+            {/*    fetchCustomers={fetchCustomers}*/}
+            {/*/>*/}
             <Wrap justify={"center"} spacing={"30px"}>
-                {customers.map((customer, index) => (
+                {users.map((user, index) => (
                     <WrapItem  key={index}>
-                        <Card {...customer}/>
+                        <Card
+                            {...user}
+                            fetchCustomers={fetchCustomers}
+                        />
                     </WrapItem>
                 ))}
             </Wrap>
