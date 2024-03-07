@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import CreateUserForm from "../user/CreateUserForm.jsx";
+import CreateProductForm from "../product/CreateProductForm.jsx";
 
 import {
     Button,
@@ -17,25 +17,26 @@ import {
 const AddIcon = () => "+";
 const CloseIcon = () => "x";
 
-const CreateUserDrawer = ({fetchCustomers}) => {
+const CreateProductDrawer = ({fetchProducts}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
     return <>
         <Button
             leftIcon={<AddIcon/>}
             colorScheme={"teal"}
             onClick={onOpen}
         >
-            Create customer
+            Create product
         </Button>
         <Drawer isOpen={isOpen} onClose={onClose} size={"xl"}>
             <DrawerOverlay />
             <DrawerContent>
                 <DrawerCloseButton />
-                <DrawerHeader>Create new User</DrawerHeader>
+                <DrawerHeader>Create new Product</DrawerHeader>
 
                 <DrawerBody>
-                    <CreateUserForm
-                        onSuccess={fetchCustomers}
+                    <CreateProductForm
+                        onSuccess={fetchProducts}
                     />
                 </DrawerBody>
 
@@ -52,4 +53,4 @@ const CreateUserDrawer = ({fetchCustomers}) => {
     </>
 }
 
-export default CreateUserDrawer;
+export default CreateProductDrawer;

@@ -19,7 +19,7 @@ import {
 
 import {deleteUserByEmail} from "../../services/client.js"
 
-export default function Card({name, email, role, fetchCustomers}) {
+export default function Card({userId, name, email, role, fetchCustomers}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const cancelRef = useRef()
 

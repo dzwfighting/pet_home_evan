@@ -4,7 +4,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import {Wrap, WrapItem, Spinner, Text, Button} from '@chakra-ui/react';
 import SidebarWithHeader from "./components/shared/SideBar.jsx";
-import CreateUserDrawer from "./components/user/CreateUserDrawer.jsx"
 import Card from "./components/user/Card.jsx";
 
 const User = () => {

@@ -4,7 +4,7 @@ import {
     useEffect,
     useState
 } from "react";
-import {getUsers, login as performLogin} from "../../services/client.js";
+import {getUsers, login as performLogin, getUserByEmail} from "../../services/client.js";
 import jwtDecode from "jwt-decode";
 
 const AuthContext = createContext({});
@@ -14,20 +14,27 @@ const AuthProvider = ({children}) => {
 
     const setUserFromToken = () => {
         let token = localStorage.getItem("access_token");
-        // console.log("token: " + token);
+        let u = null;
         if (token) {
             token = jwtDecode(token);
-            setUser({
+            // console.log("token: " + JSON.stringify(token));
+            const u = {
                 username: token.sub,
                 role: token.role,
                 roles: token.scopes
-            })
+            }
+            setUser(u);
         }
-        return user;
+        return u;
     }
+
+    // const fetchUserDetail = async () => {
+    //     return await getUserByEmail(user.username);
+    // }
+
     useEffect(() => {
-        setUserFromToken()
-    }, user)
+        setUserFromToken();
+    }, [])
 
     const login = async (usernameAndPassword) => {
         return new Promise((resolve, reject) => {
@@ -70,7 +77,8 @@ const AuthProvider = ({children}) => {
             login,
             logOut,
             isUserAuthenticated,
-            setUserFromToken
+            setUserFromToken,
+            // fetchUserDetail
         }}>
             {children}
         </AuthContext.Provider>

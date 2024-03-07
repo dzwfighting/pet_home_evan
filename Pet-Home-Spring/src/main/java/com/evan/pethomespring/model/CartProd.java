@@ -1,5 +1,6 @@
 package com.evan.pethomespring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,6 +11,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Table(name = "cart_prod", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"cart_id"})
+})
 public class CartProd {
     @Id
     @Column(name = "cart_id")
@@ -21,9 +25,18 @@ public class CartProd {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "product_id")
     private Product product;
+
+    public CartProd(int quantity, User user, Product product) {
+        this.quantity = quantity;
+        this.user = user;
+        this.product = product;
+    }
 }
+
+

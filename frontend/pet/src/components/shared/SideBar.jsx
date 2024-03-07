@@ -21,7 +21,7 @@ import {
     VStack,
     Image
 } from '@chakra-ui/react';
-
+import {useNavigate} from "react-router-dom";
 import {
     FiBell,
     FiChevronDown,
@@ -37,7 +37,7 @@ import {useAuth} from "../context/AuthContext.jsx";
 const LinkItems = [
     { name: 'Home', route: '/products', icon: FiHome },
     { name: 'Products', route: '/products', icon: FaShoppingBasket },
-    { name: 'Settings', icon: FiSettings },
+    { name: 'Settings', route: '/myaccount', icon: FiSettings },
 ]
 
 export default function SidebarWithHeader({children}) {
@@ -133,7 +133,13 @@ const NavItem = ({icon, route, children, ...rest}) => {
 };
 
 const MobileNav = ({onOpen, ...rest}) => {
-    const { login, logOut, user } = useAuth()
+    const { login, logOut, user } = useAuth();
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+        logOut();
+        navigate("/");
+    }
     return (
         <Flex
             ml={{base: 0, md: 60}}
@@ -205,7 +211,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                             <MenuItem>Cart</MenuItem>
                             <MenuItem>Settings</MenuItem>
                             <MenuDivider/>
-                            {user? <MenuItem onClick={logOut}>
+                            {user? <MenuItem onClick={handleOnClick}>
                                 Sign out
                             </MenuItem> : <MenuItem onClick={login}>Sign in</MenuItem>}
                         </MenuList>

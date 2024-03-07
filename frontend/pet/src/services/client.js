@@ -47,9 +47,21 @@ export const CreateUser = async (id, data) => {
     }
 }
 
-// export const getUserByEmail = async (email) => {
-//
-// }
+export const getUserByEmail = async (email) => {
+    try {
+        return axios.get(
+            `${import.meta.env.VITE_API_BASE_URL}/finduser/${email}`,
+            email,
+            getAuthConfig()
+        )
+    } catch (e) {
+        throw e;
+    }
+}
+
+export const updateUser = async (id, data) => {
+    
+}
 
 export const deleteUserByEmail = async (email) => {
     //需判定当前用户是否为manager，是的话再删除

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {useState, useEffect} from "react";
 import jwtDecode from "jwt-decode";
-import {useAuth} from "../components/context/AuthContext.jsx"
 
 const getAuthConfig = () => ({
     headers: {
@@ -19,48 +18,46 @@ export const getProducts = async () => {
     }
 }
 
-export const postProducts = async (id, data) => {
-    const [user, setUser] = useState(null);
-    const {setUserFromToken} = useAuth();
-    setUser(setUserFromToken());
+export const postProducts = async (data) => {
+    // console.log("this is my add product: " + JSON.stringify(data));
+    return await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/product/add`,
+        data,
+        {
+            ...getAuthConfig(),
+            'Content-Type' : 'multipart/form-data'
+        }
+    );
+}
 
-    if (user) {
-        if (user.role == "MANAGER"){
-            return await axios.post(
-                `${import.meta.env.VITE_API_BASE_URL}/product/add`,
-                data,
-                {
-                    ...getAuthConfig(),
-                    'Content-Type' : 'multipart/form-data'
-                }
-            );
-        } else throw "Only Manager can post product"
+export const ProductOperateCart = async (userId, product, operation) => {
+    console.log("ProductOperateCart userId: " + userId + " the operation is: " + operation)
+    return await axios.put(
+      `${import.meta.env.VITE_API_BASE_URL}/product/${userId}/opecart/${operation}`,
+        product,
+        getAuthConfig()
+    );
+}
 
-    } else {
-        throw "please login"
-    }
+export const ProductOperateFavorite = async (userId, product, operation) => {
+    return await axios.put(
+        `${import.meta.env.VITE_API_BASE_URL}/product/${userId}/opefavorite/${operation}`,
+        product,
+        getAuthConfig()
+    )
 }
 
 export const deleteProducts = async (id) => {
-    const [user, setUser] = useState(null);
-    const {setUserFromToken} = useAuth();
-    setUser(setUserFromToken());
-    if (user) {
-        console.log("current user info: " + user)
-        try {
-            if (user.role == "MANAGER"){
-                return await axios.delete(
-                    `${import.meta.env.VITE_API_BASE_URL}/product/${id}`
-                )
-            } else throw "Only Manager can delete this product"
+    try {
+        if (user.role == "MANAGER"){
+            return await axios.delete(
+                `${import.meta.env.VITE_API_BASE_URL}/product/${id}`
+            )
+        } else throw "Only Manager can delete this product"
 
-        } catch (e) {
-            throw e;
-        }
-    } else {
-        throw "Please login then delete";
+    } catch (e) {
+        throw e;
     }
-
 }
 
 export const getProductById = async (id) => {
@@ -73,3 +70,5 @@ export const getProductById = async (id) => {
         throw e;
     }
 }
+
+
