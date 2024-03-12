@@ -23,11 +23,11 @@ public class CartProdServiceImp implements CartProdService{
     }
 
     @Override
-    public CartProd addToCart(User user, Product product, int quantity) {
+    public CartProd addToCart(Long userId, Product product, int quantity) {
         CartProd cartProd = new CartProd();
         cartProd.setProduct(product);
         cartProd.setQuantity(quantity);
-        cartProd.setUser(user);
+        cartProd.setUserId(userId);
         return cartProdRepository.save(cartProd);
     }
 

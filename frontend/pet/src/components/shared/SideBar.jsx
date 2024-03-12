@@ -140,6 +140,11 @@ const MobileNav = ({onOpen, ...rest}) => {
         logOut();
         navigate("/");
     }
+
+    const handleClickCart = () => {
+        navigate("/cart");
+    }
+
     return (
         <Flex
             ml={{base: 0, md: 60}}
@@ -208,7 +213,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                             bg={useColorModeValue('white', 'gray.900')}
                             borderColor={useColorModeValue('gray.200', 'gray.700')}>
                             <MenuItem>Profile</MenuItem>
-                            <MenuItem>Cart</MenuItem>
+                            <MenuItem onClick={handleClickCart}>Cart</MenuItem>
                             <MenuItem>Settings</MenuItem>
                             <MenuDivider/>
                             {user? <MenuItem onClick={handleOnClick}>

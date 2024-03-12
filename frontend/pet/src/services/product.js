@@ -32,11 +32,13 @@ export const postProducts = async (data) => {
 
 export const ProductOperateCart = async (userId, product, operation) => {
     console.log("ProductOperateCart userId: " + userId + " the operation is: " + operation)
-    return await axios.put(
+    const res =  await axios.put(
       `${import.meta.env.VITE_API_BASE_URL}/product/${userId}/opecart/${operation}`,
         product,
         getAuthConfig()
     );
+    console.log("in frontend, after add/delete product from cart, the data is: " + JSON.stringify(res))
+    return res;
 }
 
 export const ProductOperateFavorite = async (userId, product, operation) => {

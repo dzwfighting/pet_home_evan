@@ -8,6 +8,7 @@ import Login from "./components/login/Login.jsx";
 import Product from "./components/product/Product.jsx";
 import AuthProvider from "./components/context/AuthContext.jsx";
 import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
+import Cart from "./components/cart/Cart.jsx";
 import SidebarWithHeader from "./components/shared/SideBar.jsx"
 
 // import './index.css'
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     {
         path: "/products",
         element: <Product />
+    },
+    {
+        path: "/cart",
+        element: <ProtectedRoute><Cart /></ProtectedRoute>
     }
 ])
 

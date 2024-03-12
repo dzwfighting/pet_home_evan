@@ -5,9 +5,9 @@ import {
     Text
 } from '@chakra-ui/react';
 import SidebarWithHeader from "../shared/SideBar.jsx"
-import {useEffect, useRef, useState, useCallback} from 'react';
+import {useEffect, useState} from 'react';
 import ProductCard from "../product/ProductCard.jsx";
-import {getProducts, postProducts} from "../../services/product.js"
+import {getProducts} from "../../services/product.js"
 import {getUserByEmail} from "../../services/client.js"
 import CreateProductDrawer from "../product/CreateProductDrawer.jsx"
 import {useAuth} from "../context/AuthContext.jsx";

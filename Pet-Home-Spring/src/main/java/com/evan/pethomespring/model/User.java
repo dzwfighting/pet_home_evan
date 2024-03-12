@@ -1,5 +1,8 @@
 package com.evan.pethomespring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,7 +45,8 @@ public class User implements UserDetails {
 
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Review> reviews;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Order> orders;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -51,7 +55,7 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> favorites;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<CartProd> cartProds;
 
     @Override
@@ -104,5 +108,20 @@ public class User implements UserDetails {
         this.orders = orders;
         this.favorites = favorites;
         this.cartProds = cartProds;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", avatar='" + avatar + '\'' +
+                ", orders=" + orders +
+                ", favorites=" + favorites +
+                ", cartProds=" + cartProds +
+                '}';
     }
 }

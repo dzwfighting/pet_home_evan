@@ -8,6 +8,8 @@ import com.evan.pethomespring.service.ProductServiceImp;
 import com.evan.pethomespring.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -68,14 +70,14 @@ public class ProductController {
 
             if (oldCartProd != null) {
                 cartProds.remove(oldCartProd);
-                System.out.println("We find if this user already add this product or not: " + oldCartProd.getProduct().getProductId() + " product name: " + oldCartProd.getProduct().getName());
+                System.out.println("We find this user already add this product, we will remove: " + oldCartProd.getProduct().getProductId() + " product name: " + oldCartProd.getProduct().getName());
             }
             System.out.println("if product already in, After remove this prod: " + cartProds.size());
             CartProd newCartProd;
-            List<CartProd> newCartProds = cartProds;
+            List<CartProd> newCartProds = new ArrayList<>(cartProds);
             if (oldCartProd == null) {
                 if (operation > 0) {
-                    newCartProd = new CartProd(1, user, product);
+                    newCartProd = new CartProd(1, userid, product);
                     newCartProds.add(newCartProd);
                     user.setCartProds(newCartProds);
                 } else {
@@ -90,7 +92,11 @@ public class ProductController {
                 user.setCartProds(newCartProds);
                 System.out.println("after add/delete product from cart, the size of cart: " + user.getCartProds().size());
             }
-            return userServiceImp.updateUserById(user.getUserId(), user);
+
+            User res =  userServiceImp.updateUserById(user.getUserId(), user);
+            User test = userServiceImp.findUserById(userid);
+            System.out.println("test: " + test.getCartProds().size());
+            return res;
         } catch (Exception e) {
             System.out.println(e);
         }
