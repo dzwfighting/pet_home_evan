@@ -31,12 +31,14 @@ import {
     FiUsers
 } from 'react-icons/fi';
 import { FaShoppingBasket } from "react-icons/fa";
+import { MdOutlineFavorite } from "react-icons/md";
 
 import {useAuth} from "../context/AuthContext.jsx";
 
 const LinkItems = [
     { name: 'Home', route: '/products', icon: FiHome },
     { name: 'Products', route: '/products', icon: FaShoppingBasket },
+    { name: 'Favorites', route: '/favorites', icon: MdOutlineFavorite },
     { name: 'Settings', route: '/myaccount', icon: FiSettings },
 ]
 
@@ -145,6 +147,10 @@ const MobileNav = ({onOpen, ...rest}) => {
         navigate("/cart");
     }
 
+    const handleClickFavorites = () => {
+        navigate("/favorites")
+    }
+
     return (
         <Flex
             ml={{base: 0, md: 60}}
@@ -214,6 +220,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                             borderColor={useColorModeValue('gray.200', 'gray.700')}>
                             <MenuItem>Profile</MenuItem>
                             <MenuItem onClick={handleClickCart}>Cart</MenuItem>
+                            <MenuItem onClick={handleClickFavorites}>Favorites</MenuItem>
                             <MenuItem>Settings</MenuItem>
                             <MenuDivider/>
                             {user? <MenuItem onClick={handleOnClick}>

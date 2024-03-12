@@ -84,7 +84,7 @@ export default function ProductCard({productId, image, name, category, price, in
     }
     
     const handleCollect = async () => {
-        console.log("will collect this product, check user if exist: " + JSON.stringify(user));
+        // console.log("will collect this product, check user if exist: " + JSON.stringify(user));
         const userDetail = await fetchUser();
         if (userDetail) {
             const res = await ProductOperateFavorite(userDetail.data.userId, { productId, image, name, category, price, introduce }, 1);

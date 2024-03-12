@@ -68,10 +68,7 @@ public class ProductController {
                     .findFirst()
                     .orElse(null);
 
-            if (oldCartProd != null) {
-                cartProds.remove(oldCartProd);
-                System.out.println("We find this user already add this product, we will remove: " + oldCartProd.getProduct().getProductId() + " product name: " + oldCartProd.getProduct().getName());
-            }
+            if (oldCartProd != null) cartProds.remove(oldCartProd);
             System.out.println("if product already in, After remove this prod: " + cartProds.size());
             CartProd newCartProd;
             List<CartProd> newCartProds = new ArrayList<>(cartProds);
@@ -84,19 +81,16 @@ public class ProductController {
                     System.out.println("you cannot delete not exist product");
                 }
             } else {
-                System.out.println("we can find this cartProd, quantity is: " + oldCartProd.getQuantity());
+//                System.out.println("we can find this cartProd, quantity is: " + oldCartProd.getQuantity());
                 oldCartProd.setQuantity(oldCartProd.getQuantity() + operation);
-                System.out.println("after operate, the current quantity: " + oldCartProd.getQuantity());
-                System.out.println("after operate, newCartProds size is: " + newCartProds.size());
+//                System.out.println("after operate, the current quantity: " + oldCartProd.getQuantity());
+//                System.out.println("after operate, newCartProds size is: " + newCartProds.size());
                 if (oldCartProd.getQuantity() > 0) newCartProds.add(oldCartProd);
                 user.setCartProds(newCartProds);
-                System.out.println("after add/delete product from cart, the size of cart: " + user.getCartProds().size());
+//                System.out.println("after add/delete product from cart, the size of cart: " + user.getCartProds().size());
             }
 
-            User res =  userServiceImp.updateUserById(user.getUserId(), user);
-            User test = userServiceImp.findUserById(userid);
-            System.out.println("test: " + test.getCartProds().size());
-            return res;
+            return userServiceImp.updateUserById(user.getUserId(), user);
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -9,6 +9,7 @@ import Product from "./components/product/Product.jsx";
 import AuthProvider from "./components/context/AuthContext.jsx";
 import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
 import Cart from "./components/cart/Cart.jsx";
+import Favorites from "./components/favorites/Favorites.jsx";
 import SidebarWithHeader from "./components/shared/SideBar.jsx"
 
 // import './index.css'
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
         path: "/cart",
         element: <ProtectedRoute><Cart /></ProtectedRoute>
+    },
+    {
+        path: "/favorites",
+        element: <ProtectedRoute><Favorites /></ProtectedRoute>
     }
 ])
 

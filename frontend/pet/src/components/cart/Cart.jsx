@@ -25,7 +25,7 @@ const Cart = () => {
       const res = await getUserByEmail(user.username);
       // console.log("in fetchUserData, res is: " + JSON.stringify(res))
       await setUserData(res.data);
-      console.log("in fetchUser, userData get, userData is: " + await userData);
+      // console.log("in fetchUser, userData get, userData is: " + await userData);
     }
   }
 
@@ -36,7 +36,7 @@ const Cart = () => {
   useEffect(() => {
     setLoading(true);
     if (user && userData) {
-      console.log("the cartProds is: " + JSON.stringify(userData.cartProds))
+      // console.log("the cartProds is: " + JSON.stringify(userData.cartProds))
       setLoading(false);
     }
   }, [userData, user])

@@ -38,27 +38,27 @@ const CartCard = ({cartId, quantity, product, userId}) => {
   const handleChangeQuantity = async (e) => {
     const target = parseInt(e.target.value, 10);
     if (!isNaN(target) && target >= 0) setNewQuantity(target);
-    console.log("newQuantity is : " + newQuantity);
+    // console.log("newQuantity is : " + newQuantity);
     const res = await ProductOperateCart(userId, product, target);
-    console.log("after set product, the new user res is: " + JSON.stringify(res.data));
+    // console.log("after set product, the new user res is: " + JSON.stringify(res.data));
     navigate(0);
   }
 
   const handleAddProd = async () => {
     const res = await ProductOperateCart(userId, product, 1);
-    console.log("after plus 1, the new user res is: " + JSON.stringify(res.data));
+    // console.log("after plus 1, the new user res is: " + JSON.stringify(res.data));
     navigate(0);
   }
 
   const handleMinusProd = async () => {
     const res = await ProductOperateCart(userId, product, -1);
-    await console.log("after minus 1, the new user res is: " + JSON.stringify(res.data));
+    // await console.log("after minus 1, the new user res is: " + JSON.stringify(res.data));
     navigate(0)
   }
 
   const handleClearProd = async () => {
     const res = await ProductOperateCart(userId, product, -quantity);
-    console.log("after clear, the new user res is: " + JSON.stringify(res.data));
+    // console.log("after clear, the new user res is: " + JSON.stringify(res.data));
     navigate(0);
   }
 

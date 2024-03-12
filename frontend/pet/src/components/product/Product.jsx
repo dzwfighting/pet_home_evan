@@ -43,7 +43,7 @@ const Product = () => {
     }
 
     const fetchUserData = async () => {
-        console.log("in fetchUserData() userDetail: " + JSON.stringify(userDetail));
+        // console.log("in fetchUserData() userDetail: " + JSON.stringify(userDetail));
         try {
             if (user && userDetail) {
                 const favoritesMap = new Map();
