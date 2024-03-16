@@ -30,17 +30,12 @@ export const login = async (usernameAndPassword) => {
     }
 }
 
-export const CreateUser = async (id, data) => {
-    //需设定只有manager才可以创建用户
-    
+export const CreateUser = async (data) => {
+    console.log("in create user, data is；" + JSON.stringify(data))
     try {
         return axios.post(
             `${import.meta.env.VITE_API_BASE_URL}/user/register`,
-            data,
-            {
-                ...getAuthConfig(),
-                'Content-Type' : 'multipart/form-data'
-            }
+            data
         );
     } catch (e) {
         throw e;
@@ -60,7 +55,16 @@ export const getUserByEmail = async (email) => {
 }
 
 export const updateUser = async (id, data) => {
-    
+    try {
+        console.log("the new user password is: " + data.password)
+        return axios.put(
+            `${import.meta.env.VITE_API_BASE_URL}/user/${id}`,
+            data,
+            getAuthConfig()
+        )
+    } catch (e) {
+        throw e;
+    }
 }
 
 export const deleteUserByEmail = async (email) => {

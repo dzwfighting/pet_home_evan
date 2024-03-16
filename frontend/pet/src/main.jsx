@@ -10,6 +10,8 @@ import AuthProvider from "./components/context/AuthContext.jsx";
 import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
+import Setting from "./components/setting/Setting.jsx";
+import Signup from "./components/signup/Signup.jsx";
 import SidebarWithHeader from "./components/shared/SideBar.jsx"
 
 // import './index.css'
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Login />
+    },
+    {
+        path: "/register",
+        element: <Signup/>
     },
     {
         path: "/users",
@@ -35,6 +41,10 @@ const router = createBrowserRouter([
     {
         path: "/favorites",
         element: <ProtectedRoute><Favorites /></ProtectedRoute>
+    },
+    {
+        path: "/setting",
+        element: <ProtectedRoute><Setting /></ProtectedRoute>
     }
 ])
 

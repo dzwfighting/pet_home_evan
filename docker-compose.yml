@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: pet
+    networks:
+      - pet-home-string
+    restart: unless-stopped
+  pet-home-string:
+    container_name: pet-backend-container
+    image: yiwen7943/pet-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/pet?useSSL=false&allowPublicKeyRetrieval=true
+    ports:
+      - "9189:9188"
+    depends_on:
+      - mysql
+    networks:
+      - pet-home-string
+    restart: unless-stopped
+  frontend:
+    container_name: pet-frontend-container
+    image: yiwen7943/pet-frontend
+    build:
+      context: frontend/pet
+      args:
+        api_base_url: http://localhost:9189
+    ports:
+      - "9199:5173"
+    depends_on:
+      - pet-home-string
+    restart: unless-stopped
+networks:
+  pet-home-string:
+  frontend:

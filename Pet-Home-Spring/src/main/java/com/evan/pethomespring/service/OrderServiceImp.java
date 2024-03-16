@@ -25,7 +25,7 @@ public class OrderServiceImp implements OrderService{
     public Order updateOrderById(Long orderId, Order newOrder) throws OrderNotFoundException{
         Order exitOrder = orderRepository.findById(orderId).orElse(null);
         if (exitOrder != null) {
-            exitOrder.setUser(newOrder.getUser());
+            exitOrder.setUserId(newOrder.getUserId());
             exitOrder.setOrderProds(newOrder.getOrderProds());
 
             return orderRepository.save(exitOrder);

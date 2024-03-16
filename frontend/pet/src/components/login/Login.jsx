@@ -110,7 +110,7 @@ const Login = () => {
                 <Stack spacing={4} w={'full'} maxW={'md'}>
                     <Heading fontSize={'2xl'} mb={15}>Sign in to your account</Heading>
                     <LoginForm />
-                    <Link color={"blue.500"} href={"/signup"}>
+                    <Link color={"blue.500"} href={"/register"}>
                         Dont have an account? Signup now.
                     </Link>
                 </Stack>

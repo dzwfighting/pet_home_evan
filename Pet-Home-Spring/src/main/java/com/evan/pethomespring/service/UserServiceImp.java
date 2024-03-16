@@ -50,17 +50,26 @@ public class UserServiceImp implements UserService{
 
     public User updateUserById(Long userId, User newUser) throws UserNotFoundException {
         User existUser = userRepository.findById(userId).orElse(null);
+        System.out.println("start change user");
+        System.out.println("the old password is: " + existUser.getPassword());
+        System.out.println("the current password is: " + newUser.getPassword());
         if (existUser != null) {
             existUser.setName(newUser.getName());
             existUser.setEmail(newUser.getEmail());
-            existUser.setPassword(newUser.getPassword());
+            if (newUser.getPassword().equals(existUser.getPassword())) {
+                existUser.setPassword(newUser.getPassword());
+            } else {
+                System.out.println("will change password, the new password is: " + newUser.getPassword());
+                existUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+            }
             existUser.setRole(newUser.getRole());
             existUser.setAvatar(newUser.getAvatar());
             existUser.setCartProds(newUser.getCartProds());
             existUser.setOrders(newUser.getOrders());
             existUser.setFavorites(newUser.getFavorites());
-
-            return userRepository.save(existUser);
+            User temp = userRepository.save(existUser);
+            System.out.println("the new password: " + temp.getPassword());
+            return temp;
         } else {
             throw new UserNotFoundException(userId);
         }

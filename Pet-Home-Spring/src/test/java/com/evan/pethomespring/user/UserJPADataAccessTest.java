@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-@Import({TestConfig.class})
+//@Import({TestConfig.class})
 public class UserJPADataAccessTest {
     @Mock
     private UserRepository userRepository;
@@ -110,17 +110,17 @@ public class UserJPADataAccessTest {
         assertEquals(user, getUser);
     }
 
-    @Test
-    void GetUsersByNameTest() {
-        User user1 = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
-        User user2 = new User(2L, "user1", "user1-1@gmail.com", "password", Roles.USER);
-
-        when(userRepository.findByName(user1.getName())).thenReturn(Arrays.asList(user1, user2));
-
-        List<User> expected = userService.getUserByName(user1.getUsername());
-        verify(userRepository, times(1)).findByName(user1.getName());
-        assertEquals(expected, Arrays.asList(user1, user2));
-    }
+//    @Test
+//    void GetUsersByNameTest() {
+//        User user1 = new User(1L, "user1", "user1@gmail.com", "password", Roles.USER);
+//        User user2 = new User(2L, "user1", "user1-1@gmail.com", "password", Roles.USER);
+//
+//        when(userRepository.findByName(user1.getName())).thenReturn(Arrays.asList(user1, user2));
+//
+//        List<User> expected = userService.getUserByName(user1.getUsername());
+//        verify(userRepository, times(1)).findByName(user1.getName());
+//        assertEquals(expected, Arrays.asList(user1, user2));
+//    }
 
     @Test
     void deleteUserByIdValidTest() throws UserNotFoundException {

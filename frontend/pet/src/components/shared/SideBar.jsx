@@ -39,7 +39,7 @@ const LinkItems = [
     { name: 'Home', route: '/products', icon: FiHome },
     { name: 'Products', route: '/products', icon: FaShoppingBasket },
     { name: 'Favorites', route: '/favorites', icon: MdOutlineFavorite },
-    { name: 'Settings', route: '/myaccount', icon: FiSettings },
+    { name: 'Settings', route: '/setting', icon: FiSettings },
 ]
 
 export default function SidebarWithHeader({children}) {
@@ -151,6 +151,10 @@ const MobileNav = ({onOpen, ...rest}) => {
         navigate("/favorites")
     }
 
+    const handleClickSetting = () => {
+        navigate("/setting")
+    }
+
     return (
         <Flex
             ml={{base: 0, md: 60}}
@@ -221,7 +225,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                             <MenuItem>Profile</MenuItem>
                             <MenuItem onClick={handleClickCart}>Cart</MenuItem>
                             <MenuItem onClick={handleClickFavorites}>Favorites</MenuItem>
-                            <MenuItem>Settings</MenuItem>
+                            <MenuItem onClick={handleClickSetting}>Settings</MenuItem>
                             <MenuDivider/>
                             {user? <MenuItem onClick={handleOnClick}>
                                 Sign out

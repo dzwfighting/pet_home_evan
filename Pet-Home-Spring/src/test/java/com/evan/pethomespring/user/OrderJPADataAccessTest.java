@@ -80,7 +80,7 @@ public class OrderJPADataAccessTest {
         Order order = new Order();
         order.setOrderId(1L);
         User user = new User();
-        order.setUser(user);
+        order.setUserId(user.getUserId());
 
         Order newOrder = new Order();
         newOrder.setOrderId(1L);
