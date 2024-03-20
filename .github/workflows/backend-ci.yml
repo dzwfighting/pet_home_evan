@@ -22,11 +22,11 @@ jobs:
         ports:
           - 3306:3306
         restart: unless-stopped
-          healthcheck:
-            test: "mysqladmin ping -h localhost -u root --password=1234"
-            interval: 10s
-            timeout: 5s
-            retries: 3
+        healthcheck:
+          test: "mysqladmin ping -h localhost -u root --password=1234"
+          interval: 10s
+          timeout: 5s
+          retries: 3
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
