@@ -16,12 +16,11 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        environment:
+        env:
           MYSQL_ROOT_PASSWORD: 1234
           MYSQL_DATABASE: pet
         ports:
           - 3306:3306
-        restart: unless-stopped
         healthcheck:
           test: "mysqladmin ping -h localhost -u root --password=1234"
           interval: 10s
