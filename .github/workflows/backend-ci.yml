@@ -37,6 +37,6 @@ jobs:
           pwd
           cd ..
           pwd
-          cd Pet-Home-Spring"
+          cd Pet-Home-Spring
           pwd
           mvn -ntp -B verify
