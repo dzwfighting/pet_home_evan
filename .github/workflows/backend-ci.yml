@@ -36,6 +36,7 @@ jobs:
         run: |
           pwd
           cd ..
-          cd "${{ github.workspace }}/Pet-Home-Spring"
+          pwd
+          cd Pet-Home-Spring"
           pwd
           mvn -ntp -B verify
