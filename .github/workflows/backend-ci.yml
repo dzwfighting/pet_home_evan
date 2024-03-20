@@ -33,6 +33,4 @@ jobs:
           java-version: '8'
           cache: 'maven'
       - name: Build and run Unit/Integration Tests with Maven
-        run: |
-          cd Pet-Home-Spring
-          ./mvn clean verify
+        run: mvn -ntp -B verify
