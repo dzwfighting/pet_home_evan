@@ -35,8 +35,6 @@ jobs:
       - name: Build and run Unit/Integration Tests with Maven
         run: |
           pwd
-          cd ..
-          pwd
           cd Pet-Home-Spring
           pwd
-          mvn -ntp -B verify
+          ./mvn clean verify
