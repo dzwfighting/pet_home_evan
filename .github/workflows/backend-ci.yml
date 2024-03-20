@@ -34,5 +34,5 @@ jobs:
           cache: 'maven'
       - name: Build and run Unit/Integration Tests with Maven
         run: |
-          cd Pet-Home-Spring
+          cd /pet_home_evan/Pet-Home-Spring
           mvn -ntp -B verify
