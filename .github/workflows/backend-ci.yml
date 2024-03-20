@@ -32,7 +32,7 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
           cache: 'maven'
-      - name: Change to project - Pet-Home-Spring dorectory
-        run: cd Pet-Home-Spring
       - name: Build and run Unit/Integration Tests with Maven
-        run: mvn -ntp -B verify
+        run: |
+          cd Pet-Home-Spring
+          mvn -ntp -B verify
