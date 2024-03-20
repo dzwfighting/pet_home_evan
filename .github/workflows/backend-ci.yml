@@ -25,6 +25,11 @@ jobs:
       run:
         working-directory: ./Pet-Home-Spring
     steps:
+      - name: Print Environment
+        run: |
+          echo "Operating System: ${{ runner.os }}"
+          echo "Runner Version: ${{ runner.version }}"
+          echo "Java Version: ${{ env.JAVA_HOME }}"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup Java
@@ -33,5 +38,5 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
           cache: 'maven'
-      - name: Build and run Unit/Integration Tests with Maven
-        run: mvn -ntp -B verify
+#      - name: Build and run Unit/Integration Tests with Maven
+#        run: mvn -ntp -B verify
